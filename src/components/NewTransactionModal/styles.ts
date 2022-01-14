@@ -1,6 +1,10 @@
 import styled from 'styled-components'
 import { darken } from 'polished'
 
+interface RadioBoxProps{
+  isActive: boolean;
+}
+
 export const Container = styled.form`
   h2{
     color: var(--text-title);
@@ -55,15 +59,17 @@ export const TransactionTypeContainer = styled.div`
   margin: 1rem 0;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 0.5rem;
+  gap: 0.5rem;  
 
-  button{
+`;
+  export const RadioBox = styled.button<RadioBoxProps>`
     height: 4rem;
     border: 1px solid #d7d7d7;
     border-radius: 0.25rem;
     display: flex;
     align-items: center;
     justify-content: center;
+    background: ${(props) => props.isActive ? '#ccc' : 'transparent'};
 
     transition: border-color 0.2s;
 
@@ -83,5 +89,5 @@ export const TransactionTypeContainer = styled.div`
       color:var(--text-title)
     }  
 
-  }
-`;
+  
+ `;
