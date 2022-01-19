@@ -7,11 +7,35 @@ createServer({
   models: {
     transaction: Model,
   },
+
+  seeds(server) {
+    server.db.loadData({
+      transactions: [
+        {
+          id: 1,
+          title: "Transction 1",
+          amount: 400,
+          type: "deposit",
+          category: "Food",
+          createdAt: new Date(),
+        },
+        {
+          id: 2,
+          title: "Transction 2",
+          amount: 400,
+          type: "deposit",
+          category: "Food",
+          createdAt: new Date(),
+        },
+      ],
+    });
+  },
+
   routes() {
     this.namespace = "api";
     // Configurando as rotas
     this.get("/transactions", () => {
-      return this.schema.all("transcation");
+      return this.schema.all("transaction");
     });
 
     this.post("/transactions", (schema, request) => {
