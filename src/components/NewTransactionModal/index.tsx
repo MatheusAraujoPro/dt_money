@@ -29,7 +29,7 @@ export function NewTransactionModal({
     setType(type);
   }
 
-  function handleCreateNewTransaction(event: FormEvent) {
+  async function handleCreateNewTransaction(event: FormEvent) {
     //Impede o HTML de recarregar a tela ao subimitar o formulário
     event.preventDefault();
     const data = {
@@ -38,7 +38,13 @@ export function NewTransactionModal({
       amount,
       category,
     };
-    createTransaction(data);
+    await createTransaction(data);
+
+    setType("");
+    setAmount(0);
+    setCategory("");
+
+    onRequestClose();
   }
 
   return (
